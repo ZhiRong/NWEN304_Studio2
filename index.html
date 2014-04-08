@@ -56,6 +56,25 @@ $(document).bind('pageinit', function() {
   });
 
 });
+
+
+//Add a new button to the page:
+
+<label for="text-2">Add a new quote:</label>
+ <input type="submit" value="Submit Button" id="button2" />
+
+//Add some new handling code that uses the Jquery ajax post method to add “foo” and “some text”.
+
+  $( "#button2" ).bind( "click", function(event, ui) {
+	alert("Posting a new quote");
+	var jsonUrl = "http://localhost:3001/quote";
+	var newQuote = { "author" : "foo", "text" : "some text" };
+	$.post(jsonUrl,newQuote, function(data) {
+  	alert("Added " + data.author + " " + data.text);
+	}, 'json');
+  });
+
+
 </script>
 </body>
 </html>
